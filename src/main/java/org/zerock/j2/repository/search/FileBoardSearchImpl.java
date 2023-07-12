@@ -55,6 +55,7 @@ public class FileBoardSearchImpl extends QuerydslRepositorySupport implements Fi
                 boardImage.fname
         ));
 
+        // 여기서 fetch()는 쿼리실행결과
         List<FileBoardListDTO> list = listQuery.fetch();
 
         long totalCount = listQuery.fetchCount();
