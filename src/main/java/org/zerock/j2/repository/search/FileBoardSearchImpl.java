@@ -1,7 +1,8 @@
 package org.zerock.j2.repository.search;
 
-import java.util.List;
-
+import com.querydsl.core.types.Projections;
+import com.querydsl.jpa.JPQLQuery;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -13,11 +14,7 @@ import org.zerock.j2.entity.FileBoard;
 import org.zerock.j2.entity.QFileBoard;
 import org.zerock.j2.entity.QFileBoardImage;
 
-import com.querydsl.core.Tuple;
-import com.querydsl.core.types.Projections;
-import com.querydsl.jpa.JPQLQuery;
-
-import lombok.extern.log4j.Log4j2;
+import java.util.List;
 
 @Log4j2
 public class FileBoardSearchImpl extends QuerydslRepositorySupport implements FileBoardSearch{
