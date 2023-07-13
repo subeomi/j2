@@ -14,7 +14,7 @@ public class ReviewTests {
 
     @Test
     public void insertReview(){
-        Long[] pnoArr = {200L, 195L, 190L, 185L};
+        Long[] pnoArr = {212L, 208L, 207L, 205L};
 
         for(Long pno : pnoArr){
 
@@ -22,7 +22,7 @@ public class ReviewTests {
 
             Product product = Product.builder().pno(pno).build();
 
-            for(int i = 0; i < 10; i++){
+            for(int i = 0; i < 24; i++){
 
                 ProductReview review = ProductReview.builder()
                     .content("skoaskdaoskdoas")

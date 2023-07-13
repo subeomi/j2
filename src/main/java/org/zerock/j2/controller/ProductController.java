@@ -30,9 +30,10 @@ public class ProductController {
 
         log.info(productDTO);
 
-        List<String> fileNames = uploader.uploadFiles(productDTO.getFiles(), true);
-        productDTO.setImages(fileNames);
-        
+            List<String> fileNames = uploader.uploadFiles(productDTO.getFiles(), true);
+            productDTO.setImages(fileNames);
+
+
         Long pno = service.register(productDTO);
 
         return Map.of("result", pno);
@@ -51,8 +52,6 @@ public class ProductController {
             List<String> uploadFileNames = uploader.uploadFiles(productDTO.getFiles(), true);
             // 기존 파일 이미지들
             List<String> oldFileNames = productDTO.getImages();
-
-
 
             // 새 이미지를 추가한다
             uploadFileNames.forEach(fname -> oldFileNames.add(fname));

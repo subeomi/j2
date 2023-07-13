@@ -3,6 +3,7 @@ package org.zerock.j2.repository.search;
 
 import java.util.List;
 
+import com.querydsl.core.BooleanBuilder;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -69,7 +70,31 @@ public class ProductSearchImpl extends QuerydslRepositorySupport implements Prod
         QProductImage productImage = QProductImage.productImage;
         QProductReview review = QProductReview.productReview;
 
+        String keyword = pageRequestDTO.getKeyword();
+        String searchType = pageRequestDTO.getType();
+
         JPQLQuery<Product> query = from(product);
+
+        if(keyword != null && searchType != null){
+
+            // tc -> [t, c]
+            String[] searchArr = searchType.split("");
+
+            // 우선순위 연산자 ( ... ) ...
+            BooleanBuilder searchBuilder = new BooleanBuilder();
+
+            for (String type : searchArr) {
+                switch(type) {
+                    // or연산
+                    case "t" -> searchBuilder.or(product.pname.contains(keyword));
+                    case "c" -> searchBuilder.or(product.pdesc.contains(keyword));
+                    case "w" -> searchBuilder.or(product.writer.contains(keyword));
+                }
+            } // end for
+
+            query.where(searchBuilder);
+        }
+
         query.leftJoin(product.images, productImage);
         query.leftJoin(review).on(review.product.eq(product)); // on조건은 해당엔티티 기준에서
 
