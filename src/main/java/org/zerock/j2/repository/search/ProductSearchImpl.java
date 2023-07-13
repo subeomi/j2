@@ -74,6 +74,7 @@ public class ProductSearchImpl extends QuerydslRepositorySupport implements Prod
         query.leftJoin(review).on(review.product.eq(product)); // on조건은 해당엔티티 기준에서
 
         query.where(productImage.ord.eq(0));
+        query.where(product.delFlag.eq(Boolean.FALSE));
 
         int pageNum = pageRequestDTO.getPage() <= 0? 0: pageRequestDTO.getPage() -1;
         Pageable pageable = 

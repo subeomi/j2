@@ -6,6 +6,7 @@ import org.zerock.j2.dto.ProductDTO;
 import org.zerock.j2.dto.ProductListDTO;
 
 import jakarta.transaction.Transactional;
+import org.zerock.j2.entity.Product;
 
 @Transactional
 public interface ProductService {
@@ -13,5 +14,11 @@ public interface ProductService {
     PageResponseDTO<ProductListDTO> list(PageRequestDTO requestDTO);
 
     Long register(ProductDTO productDTO);
+
+    ProductDTO readOne(Long pno);
+
+    void remove(Long pno);
+
+    void modify(ProductDTO productDTO);
 
 }
