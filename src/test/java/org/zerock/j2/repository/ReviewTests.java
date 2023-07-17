@@ -14,15 +14,16 @@ public class ReviewTests {
 
     @Test
     public void insertReview(){
-        Long[] pnoArr = {212L, 208L, 207L, 205L};
+        Long[] pnoArr = {216L};
 
         for(Long pno : pnoArr){
 
-            int score = (int)(Math.random() * 5) + 1;
+            int score = 5;
+//            int score = (int)(Math.random() * 5) + 1;
 
             Product product = Product.builder().pno(pno).build();
 
-            for(int i = 0; i < 24; i++){
+            for(int i = 0; i < 5; i++){
 
                 ProductReview review = ProductReview.builder()
                     .content("skoaskdaoskdoas")
