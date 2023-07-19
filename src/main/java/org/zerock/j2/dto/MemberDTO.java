@@ -19,4 +19,8 @@ public class MemberDTO {
     private String nickname;
 
     private boolean admin;
+
+    private String accessToken;
+
+    private String refreshToken;
 }
