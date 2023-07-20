@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.zerock.j2.util.JWTUtil;
@@ -43,6 +44,7 @@ public class JWTInterceptor implements HandlerInterceptor {
             log.info("result: " + claims);
         } catch (Exception e){
 
+//            response.setStatus(HttpStatus.UNAUTHORIZED.value());
             response.setContentType("application/json");
 
             Gson gson = new Gson();
